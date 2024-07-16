@@ -8,7 +8,7 @@ namespace Smart_Cart
 {
     public class Shop
     {
-        protected List<Product> availableProducts;
+        public List<Product> availableProducts;
 
         public Shop()
         {

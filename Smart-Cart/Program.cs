@@ -19,7 +19,7 @@ class Program
             Console.WriteLine("4. View Cart");
             Console.WriteLine("5. Remove Item from Cart");
             Console.WriteLine("6. Checkout and Exit");
-            Console.Write("\nSelect an option: ");
+            Console.Write("\nSelect an option: "); 
             string choice = Console.ReadLine().ToLower();
 
             if (choice == "1")
