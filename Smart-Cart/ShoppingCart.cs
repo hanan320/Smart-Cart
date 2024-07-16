@@ -6,8 +6,8 @@ namespace Smart_Cart
 {
     public class ShoppingCart
     {
-        private List<Product> items;
-        private ProductGenerator productGenerator;
+        public List<Product> items;
+        public ProductGenerator productGenerator;
 
         public ShoppingCart()
         {
@@ -22,12 +22,17 @@ namespace Smart_Cart
 
         public bool RemoveItem(string productName)
         {
+           
+
+            Console.Write("\n");
             var product = items.FirstOrDefault(p => p.Name.Equals(productName, StringComparison.OrdinalIgnoreCase));
             if (product != null)
             {
                 items.Remove(product);
+               
                 return true;
             }
+
             return false;
         }
 
@@ -48,11 +53,12 @@ namespace Smart_Cart
 
             // Option to add new random products
             Console.WriteLine("\nWould you like to add some random products? (yes/no)");
-            string response = Console.ReadLine();
-            if (response.Equals("yes", StringComparison.OrdinalIgnoreCase))
+            string response = Console.ReadLine() .ToLower();
+            if (response=="yes")
             {
                 AddRandomProducts();
             }
+            Console.WriteLine("\n");
         }
 
         private void AddRandomProducts()
@@ -68,9 +74,9 @@ namespace Smart_Cart
             {
                 Console.WriteLine($"{product.Name} - ${product.Price} ({product.Category})");
             }
-
+            Console.WriteLine("\n");
             Console.WriteLine("Enter the name of the product you want to add to your cart:");
-            string productName = Console.ReadLine();
+            string productName = Console.ReadLine().ToLower();
             var selectedProduct = randomProducts.FirstOrDefault(p => p.Name.Equals(productName, StringComparison.OrdinalIgnoreCase));
             if (selectedProduct != null)
             {
@@ -81,6 +87,7 @@ namespace Smart_Cart
             {
                 Console.WriteLine("Product not found in the random products list.");
             }
+            Console.WriteLine("\n");
         }
 
         public decimal CalculateTotalCost()
@@ -88,11 +95,6 @@ namespace Smart_Cart
             return items.Sum(item => item.Price);
         }
 
-        // Optional: Method to clear the cart
-        public void ClearCart()
-        {
-            items.Clear();
-            Console.WriteLine("Your cart has been cleared.");
-        }
+       
     }
 }
